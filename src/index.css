@@ -1,1 +1,19 @@
 @import "tailwindcss";
+
+@font-face {
+  font-family: Amazonember;
+  src: url("../public/assets/fonts/AmazonEmber.ttf");
+}
+
+@theme {
+  --color-black: #000;
+  --color-textWhite: #fcf7f7;
+  --color-secondary_black: #0c0b00;
+  --color-blue: #128bb5;
+  --color-gray: #262624;
+  --color-yellow: #deb522;
+}
+
+* {
+  font-family: Amazonember;
+}
