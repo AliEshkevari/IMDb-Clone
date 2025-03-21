@@ -11,9 +11,25 @@
   --color-secondary_black: #0c0b00;
   --color-blue: #128bb5;
   --color-gray: #262624;
+  --color-textGray: #cad5e2;
   --color-yellow: #deb522;
 }
 
+
 * {
   font-family: Amazonember;
+  box-sizing: border-box;
+}
+
+
+.swiper-button-prev,
+.swiper-button-next{
+  @apply border-2 border-textWhite duration-200;
+  color: #fff !important;
+  padding: 2rem 1.5rem !important;
+}
+
+.swiper-button-prev:hover,
+.swiper-button-next:hover{
+  color: var(--color-yellow) !important;
 }

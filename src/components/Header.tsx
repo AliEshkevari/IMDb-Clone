@@ -7,9 +7,10 @@ import { FaUser } from "react-icons/fa";
 
 export default function Header() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [isFocused, setIsFocused] = useState(false)
 
   return (
-    <section className="header flex items-center justify-between bg-secondary_black p-3 md:p-4">
+    <header className="header flex items-center justify-evenly bg-secondary_black p-3 md:p-4">
       <div className="flex items-center gap-4 xl:hidden">
         <div
           className="p-2 rounded-full hover:bg-gray cursor-pointer transition duration-200"
@@ -39,15 +40,18 @@ export default function Header() {
         <span className="text-textWhite font-[Amazonember]">Menu</span>
       </div>
 
-      <div className="hidden md:flex items-center bg-textWhite rounded-md overflow-hidden">
+      <div className={`search-bar-container hidden md:flex items-center bg-textWhite rounded-md overflow-hidden transition-all duration-200
+        ${isFocused ? 'border-[3px] border-yellow' : 'border-[3px] border-transparent'}`}>
         <div className="flex items-center p-2 border-r border-gray-300 cursor-pointer">
           <span className="text-xs md:text-sm">All</span>
           <IoIosArrowDown className="ml-1 text-secondary_black" />
         </div>
         <div className="relative flex items-center">
           <input
-            className="py-2 px-3 w-40 md:w-52 lg:w-80 text-secondary_black focus:outline-none"
+            className="py-2 px-3 w-64 lg:w-80 text-secondary_black focus:outline-none"
             placeholder="Search IMDb"
+            onFocus={() => setIsFocused(true)}
+            onBlur={() => setIsFocused(false)}
           />
           <IoMdSearch className="text-secondary_black text-xl absolute right-2 cursor-pointer" />
         </div>
@@ -55,10 +59,11 @@ export default function Header() {
       <IoMdSearch className="md:hidden text-textWhite text-2xl cursor-pointer" />
 
       <div className="flex items-center gap-2 md:gap-4">
-        <div className="hidden lg:flex items-center gap-2 p-2 rounded-full hover:bg-gray cursor-pointer transition duration-200">
+        <div className="hidden lg:flex items-center p-2 rounded-full hover:bg-gray cursor-pointer transition duration-200">
           <span className="text-textWhite font-bold">IMDb</span>
           <span className="text-blue font-bold">Pro</span>
         </div>
+        <div className="hidden lg:block h-6 w-[0.1rem] bg-textWhite mx-2" />
         <div className="hidden lg:flex items-center gap-2 p-2 rounded-full hover:bg-gray cursor-pointer transition duration-200">
           <BsBookmarkPlus className="text-textWhite text-xl" />
           <span className="text-textWhite">Watchlist</span>
@@ -67,7 +72,6 @@ export default function Header() {
           </span>
         </div>
 
-        <div className="hidden lg:block h-6 w-[0.1rem] bg-textWhite mx-2" />
         <div className="flex items-center gap-1 p-2 rounded-full hover:bg-gray cursor-pointer transition duration-200">
           <FaUser className="text-textWhite text-lg" />
           <span className="text-textWhite text-xs md:text-sm">
@@ -97,6 +101,6 @@ export default function Header() {
           </ul>
         </div>
       )}
-    </section>
+    </header>
   );
 }
